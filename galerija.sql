@@ -3,11 +3,18 @@ drop database if exists galerijaslika;
 create database galerijaslika;
 use galerijaslika;
 
-create table slika(
+create table galerija(
+sifra int not null primary key auto_increment,
 naziv varchar(50),
-godina datetime,
-vrsta varchar(50)
+radno_vrijeme datetime,
+slika int
 );
+
+CREATE TABLE slika(
+vrsta 
+)
+
+
 
 
 
