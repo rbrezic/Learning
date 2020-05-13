@@ -25,6 +25,10 @@ prezime varchar(50),
 datum_rodenja datetime
 );
 
+alter table slika add foreign key (galerija) references galerija(sifra);
+alter table slika add foreign key (autor) references autor(sifra);
+
+
 
 
 
