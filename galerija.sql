@@ -10,9 +10,22 @@ radno_vrijeme datetime,
 slika int
 );
 
-CREATE TABLE slika(
-vrsta 
-)
+create table slika(
+sifra int not null primary key auto_increment,
+vrsta varchar(50),
+godina datetime,
+naziv varchar(50),
+autor int
+);
+
+create table autor(
+sifra int not null primary key auto_increment,
+ime varchar(50),
+prezime varchar(50),
+datum_rodenja datetime
+);
+
+
 
 
 
