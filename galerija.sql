@@ -13,9 +13,9 @@ slika int
 create table slika(
 sifra int not null primary key auto_increment,
 vrsta varchar(50),
-godina datetime,
+godina varchar(50),
 naziv varchar(50),
-autor int not null,
+autor int,
 galerija int
 );
 
@@ -29,9 +29,17 @@ datum_rodenja varchar(50)
 alter table slika add foreign key (galerija) references galerija(sifra);
 alter table slika add foreign key (autor) references autor(sifra);
 
+#select * from galerija;
 insert into galerija(sifra,naziv,radno_vrijeme)
 values (null,'Suvremena','08:00-15:00');
 
+#select * from autor;
+insert into autor (sifra,ime,prezime,datum_rodenja)
+values (null,'Pablo','Picasso','25/10/1881');
+
+#select * from slika;
+insert into slika(sifra,vrsta,godina,naziv,autor)
+values (null,'tempera','1882','Brdo',1);
 
 
 
