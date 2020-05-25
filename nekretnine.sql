@@ -9,7 +9,7 @@ vrsta int not null,
 lokacija int not null,
 naziv varchar(50) not null,
 legalizacija boolean,
-kvadratura varchar(50),
+kvadratura decimal(18,2),
 opis text,
 vlasnik int not null
 );
