@@ -3,28 +3,29 @@ package edunova;
 import javax.swing.JOptionPane;
 
 public class Zadatak01 {
+	
+	// Korisnik unosi 3 broj
+	// ispisuje se najveći
+	
 	public static void main(String[] args) {
+		int prviBroj = Integer.parseInt(JOptionPane.showInputDialog("Unesi prvi broj"));
+		int drugiBroj = Integer.parseInt(JOptionPane.showInputDialog("Unesi drugi broj"));
+		int treciBroj = Integer.parseInt(JOptionPane.showInputDialog("Unesi treci broj"));
 		
-		int br1,br2,br3,max;
+		int broj = 0;
 		
-		br1 = Integer.parseInt(JOptionPane.showInputDialog("Unesite prvi broj")); 
-		br2 = Integer.parseInt(JOptionPane.showInputDialog("Unesite drugi broj")); 		
-		br3 = Integer.parseInt(JOptionPane.showInputDialog("Unesite treci broj")); 
-		 
-		if (br1>br2 & br1>br3) {
-			max=br1;
-			System.out.println(max); 
-		}else if (br2>br1 & br2>br3) {
-			max=br2;
-			System.out.println(max); 
+		if(prviBroj >= drugiBroj ) {
+			broj = prviBroj;
 		}
 		else {
-			max=br3;
-			System.out.println(max); 
+			broj = drugiBroj;
 		}
-			
+		if(treciBroj >= broj) {
+				broj = treciBroj;
+				
+			}
 		
-			
+		System.out.println("Najveci broj je "+broj);
 	}
 
 }
