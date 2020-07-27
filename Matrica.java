@@ -16,7 +16,7 @@ public class Matrica {
 			
 			}
 		
-		for(i=0;i<10;i++) {
+		for(i=0;i<r;i++) {
 		System.out.println(Arrays.toString(matrica[i]));
 		}
 	}
