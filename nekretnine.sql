@@ -42,3 +42,6 @@ alter table nekretnina add foreign key (vrsta) references vrsta(sifra);
 alter table nekretnina add foreign key (lokacija) references lokacija(sifra);
 
 alter table nekretnina add foreign key (vlasnik) references vlasnik(sifra);
+
+insert into vlasnik(ime,prezime,kontakt,oib,spol)
+values('Rafael','Brezić','0995558577','12345678989','muško');
