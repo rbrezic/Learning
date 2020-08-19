@@ -7,8 +7,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CRUDVlasnik {
-	private static void create(Vlasnik vlasnik) {
-		//unosenje baze
+	
+	static void create(Vlasnik vlasnik) {
+		try {
+			PreparedStatement izraz = Baza.getVeza().prepareStatement(
+					"insert into vlasnik" 
+							+ " (ime,prezime,kontakt,oib,spol) "
+							+ " values (?,?,?,?,?)");
+			izraz.setString(1, vlasnik.getIme());
+			izraz.setString(2, vlasnik.getPrezime());
+			izraz.setString(3, vlasnik.getKontakt());
+			izraz.setString(4, vlasnik.getOib());
+			izraz.setString(5, vlasnik.getSpol());
+			
+			izraz.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
 	}
 		
 	public static List<Vlasnik> read() {
@@ -37,10 +55,52 @@ public class CRUDVlasnik {
 		
 	
 	}
-	private static void update(Vlasnik vlasnik) {
+	static void update(Vlasnik vlasnik) {
 		//azuriranje baze
+		try {
+			PreparedStatement izraz = Baza.getVeza().prepareStatement(
+					"update vlasnik set "
+					+ " ime=?, "
+					+ " prezime=?, "
+					+ " kontakt=?, "
+					+ " oib=? "
+					+ " spol=? "
+					+ " where sifra=? ");
+			izraz.setString(1, vlasnik.getIme());
+			izraz.setString(2, vlasnik.getPrezime());
+			izraz.setString(3, vlasnik.getKontakt());
+			izraz.setString(4, vlasnik.getOib());
+			izraz.setString(5, vlasnik.getSpol());
+			izraz.setInt(6,    vlasnik.getSifra());
+			
+			izraz.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 	}
-	private static void delete(int sifra) {
+	static void delete(int sifra) {
 		//brisanje baze
+		try {
+			PreparedStatement izraz = Baza.getVeza().prepareStatement(
+					"delete from vlasnik  "
+					+ " where sifra=? ");
+			
+			izraz.setInt(1, sifra);
+			
+			izraz.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	public static Vlasnik getOsoba(int redniBroj) {
+		int rb=0;
+		for(Vlasnik o : read()) {
+			if(++rb==redniBroj) {
+				return o;
+			}
+		}
+		return null;
 	}
 }
