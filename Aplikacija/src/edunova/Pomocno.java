@@ -55,6 +55,22 @@ public class Pomocno {
 			return s;
 		}
 	}
+	public static String vodecePraznine(int broj) {
+		String praznine="";
+		while(broj>0) {
+			broj=broj/10;
+			praznine+=" ";
+		}
+		return praznine;
+	}
+	public static int brojZnamenki(int broj) {
+		int znamenke=0;
+		while(broj>0) {
+			broj=broj/10;
+			znamenke++;
+		}
+		return znamenke;
+	}
 
 
 }

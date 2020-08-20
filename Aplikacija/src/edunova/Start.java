@@ -1,5 +1,7 @@
 package edunova;
 
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 public class Start {
@@ -67,6 +69,7 @@ public class Start {
 			return;
 		}
 		CRUDVlasnik.delete(vlasnik.getSifra());
+		System.out.println("Uspješno ste obrisali vlasnika 😮");
 	}
 		
 	
@@ -84,6 +87,7 @@ public class Start {
 		vlasnik.setOib(Pomocno.ucitajString("Promjeni OIB",vlasnik.getOib()));
 		vlasnik.setSpol(Pomocno.ucitajString("Promjeni spol", vlasnik.getSpol()));
 		CRUDVlasnik.update(vlasnik);
+		System.out.println("Uspješno ste promjenili vlasnika 😀");
 	}
 		
 	private Vlasnik odaberiVlasnika(String poruka) {
@@ -92,28 +96,18 @@ public class Start {
 		return CRUDVlasnik.getOsoba(redniBroj);
 		
 	}
-
 	
-
-	/*private void unesiVlasnika() {
-		Vlasnik vlasnik = new Vlasnik();
-		vlasnik.setIme("Unesite ime:");
-		vlasnik.setPrezime("Unesite prezime:");
-		vlasnik.setKontakt("Ostavite svoj kontakt(telefon/mail)");
-		vlasnik.setOib("Unesite svoj OIB:");
-		vlasnik.setSpol("Unesite svoj spol:");
-		
-		
-		
-	}
-*/
-
-
-
-
 	private void izlistajVlasnike() {
-		CRUDVlasnik.read().forEach(vlasnik->System.out.println(vlasnik));
-		
+		List<Vlasnik> vlasnici = CRUDVlasnik.read();
+		String redniBroj;
+		System.out.println("---------VLASNICI---------");
+		for(int i=0;i<vlasnici.size();i++) {
+			redniBroj=Pomocno.vodecePraznine(vlasnici.size())+(i+1);
+			redniBroj=redniBroj.substring(redniBroj.length()-Pomocno.brojZnamenki(vlasnici.size()));
+			
+			System.out.println(redniBroj + ". " + vlasnici.get(i));		
+		}
+		System.out.println("--------------------------");
 	}
 
 
